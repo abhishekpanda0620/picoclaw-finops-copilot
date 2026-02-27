@@ -1,7 +1,7 @@
 ---
 name: finops
 description: AWS cost analysis and cloud optimization using AWS CLI.
-metadata: {"nanobot":{"emoji":"💰","requires":{"bins":["aws"]}}}
+metadata: {"openclaw":{"emoji":"💰","requires":{"bins":["aws"]}}}
 ---
 
 # FinOps – AWS Cost Analysis
@@ -237,3 +237,95 @@ Format Slack output as:
 
 if none found:
 - ✅ No EBS waste detected.
+
+---
+
+## Unused Elastic IPs (EIPs) Detection
+
+When the user asks about idle Elastic IPs or unused EIPs.
+
+Use:
+
+```bash
+aws ec2 describe-addresses \
+  --query 'Addresses[?NetworkInterfaceId==null].{PublicIp:PublicIp,AllocationId:AllocationId}' \
+  --output json
+```
+
+After retrieving EIPs:
+- Calculate monthly waste. AWS charges roughly $3.60/month ($0.005/hour) per unattached EIP.
+- Ask for confirmation before release.
+
+Format Slack output dynamically. Do not use raw JSON. Example structure:
+
+⚠️ *Unused Elastic IPs Detected* 
+
+Estimated Monthly Waste: `$7.20`
+
+• `198.51.100.14` (Allocation ID: eipalloc-0abcd)
+• `203.0.113.55` (Allocation ID: eipalloc-0wxyz)
+
+*Action:* Would you like me to release these IPs?
+
+---
+
+## Idle Load Balancers Detection
+
+When the user asks about unused load balancers, ALBs, or ELBs without traffic.
+(Note: ELBv2 covers both Application and Network Load Balancers).
+
+Use:
+
+```bash
+aws elbv2 describe-load-balancers \
+  --query 'LoadBalancers[].{Name:LoadBalancerName,ARN:LoadBalancerArn}' \
+  --output json
+```
+
+Then, for each load balancer ARN, check if it has target groups with healthy targets. 
+*LLM Instruction: If a load balancer has 0 active targets over an extended period, treat it as idle.*
+
+Format Slack output dynamically. Do not use raw JSON. Example structure:
+
+⚠️ *Idle Load Balancers Detected* 
+
+Estimated Minimum Monthly Waste: `$33.00+`
+
+• `web-frontend-alb` (0 active targets)
+• `internal-api-elb` (0 active targets)
+
+*Action:* Please review these balancers in the AWS console.
+
+---
+
+## Top S3 Storage Costs
+
+When the user asks about the largest S3 buckets or S3 storage costs.
+
+Use AWS Cost Explorer (since scanning actual bucket sizes via `aws s3 ls` iteratively is slow).
+
+```bash
+aws ce get-cost-and-usage \
+  --time-period Start=$(date -d "-7 days" +%Y-%m-%d),End=$(date +%Y-%m-%d) \
+  --granularity MONTHLY \
+  --metrics "BlendedCost" \
+  --filter '{"Dimensions": {"Key": "SERVICE", "Values": ["Amazon Simple Storage Service"]}}' \
+  --group-by Type=TAG,Key=aws:createdBy \
+  --query "ResultsByTime[0].Groups[].{Tag:Keys[0],Cost:Metrics.BlendedCost.Amount}" \
+  --output json
+```
+
+*(Note for the AI: Modify the `--group-by Type=TAG,Key=YOUR_BUCKET_TAG` if standard tagging is used in the environment, otherwise rely on the base Cost Explorer query to get the total S3 spend over the last week).*
+
+Format Slack output dynamically. Do not use raw JSON. Example structure:
+
+💰 *S3 Storage Costs (Last 7 Days)* 
+
+Total S3 Spend: `$145.20`
+
+Top Allocations:
+• `production-assets` → `$85.00`
+• `database-backups` → `$40.20`
+• `dev-logs` → `$20.00`
+
+*Suggestion:* Consider enabling S3 Intelligent-Tiering if costs remain high.

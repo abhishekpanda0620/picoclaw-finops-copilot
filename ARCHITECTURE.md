@@ -4,7 +4,7 @@ The system follows a distributed, event-driven design integrating natural langua
 
 ## High-Level Diagram
 
-![Architecture Diagram](PicoClaw-FinOps-Copilot.drawio.png)
+![Architecture Diagram](docs/PicoClaw-FinOps-Copilot.drawio.png)
 
 ### Request Flow
 

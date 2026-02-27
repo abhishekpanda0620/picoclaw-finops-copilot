@@ -17,7 +17,7 @@ It helps engineering teams:
 
 # 🧱 Architecture
 
-![Architecture Diagram](PicoClaw-FinOps-Copilot.drawio.png)
+![Architecture Diagram](docs/PicoClaw-FinOps-Copilot.drawio.png)
 
 
 ### Core Design Principle
