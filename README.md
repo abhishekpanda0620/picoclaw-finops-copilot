@@ -1,5 +1,11 @@
 # PicoClaw FinOps Copilot
 
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![AWS](https://img.shields.io/badge/AWS-FinOps-232F3E?logo=amazon-aws)](https://aws.amazon.com/)
+[![Terraform](https://img.shields.io/badge/Terraform-Deployed-7B42BC?logo=terraform)](https://www.terraform.io/)
+[![Slack](https://img.shields.io/badge/Slack-Integration-4A154B?logo=slack)](https://slack.com)
+[![Telegram](https://img.shields.io/badge/Telegram-Supported-2CA5E0?logo=telegram)](https://telegram.org)
+
 > Enterprise-grade AIOps & LLMOps automation agent built for DevOps teams.
 
 PicoClaw FinOps Copilot is a Slack-native, AI-assisted cloud cost intelligence platform that integrates AWS Cost Explorer with deterministic cost analysis and LLM-based executive reporting.
