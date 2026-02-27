@@ -1,4 +1,4 @@
-# 🚀 PicoClaw FinOps Copilot
+# PicoClaw FinOps Copilot
 
 > AI-powered AWS FinOps automation agent built for DevOps teams.
 
@@ -6,16 +6,16 @@ PicoClaw FinOps Copilot is a Slack-native, AI-assisted cloud cost intelligence p
 
 It helps engineering teams:
 
-- 📊 Compare monthly cloud spend
-- 🚨 Detect cost anomalies
-- 💰 Identify waste
-- 📅 Automate scheduled reports
-- 🧠 Explain cost changes in plain language
-- 🔐 Operate securely using IAM roles (no static credentials)
+- Compare monthly cloud spend
+- Detect cost anomalies
+- Identify waste
+- Automate scheduled reports
+- Explain cost changes in plain language
+- Operate securely using IAM roles (no static credentials)
 
 ---
 
-# 🧱 Architecture
+# Architecture
 
 ![Architecture Diagram](docs/PicoClaw-FinOps-Copilot.drawio.png)
 
@@ -39,12 +39,12 @@ This repository comes with a built-in AWS FinOps skill for PicoClaw, allowing it
 - **Monthly Cost Comparison:** Compare current month spend vs previous month spend with percentage change highlighting.
 - **Idle Resource Detection:** Finds unused EBS volumes (`available` state), calculates monthly waste, and offers cleanup assistance safely.
 
-## 🚨 Alerts & Monitoring
+## Alerts & Monitoring
 - Daily cost summary
 - Service-level cost spike detection
 - Weekly executive report
 
-## 🧠 AI-Enhanced Insights
+## AI-Enhanced Insights
 - Plain-language explanations of cost increases
 - Slack-friendly formatting (no massive raw JSON dumps)
 - Safe read-only executions (destructions require explicit user confirmation)
@@ -59,7 +59,7 @@ This repository comes with a built-in AWS FinOps skill for PicoClaw, allowing it
 
 ---
 
-# 🛠 Requirements
+# Requirements
 
 - Ubuntu EC2 instance (or compatible Linux server)
 - IAM Role with Cost Explorer permissions
@@ -70,9 +70,9 @@ This repository comes with a built-in AWS FinOps skill for PicoClaw, allowing it
 
 ---
 
-# 🚀 Quick Start
+# Quick Start
 
-## 1️⃣ Attach IAM Role to EC2
+## Attach IAM Role to EC2
 
 Minimum required permissions:
 
@@ -89,7 +89,7 @@ aws sts get-caller-identity
 
 ---
 
-## 2️⃣ Configure PicoClaw
+## Configure PicoClaw
 
 Update `~/.picoclaw/config.json`:
 
