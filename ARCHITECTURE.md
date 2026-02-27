@@ -4,7 +4,7 @@ The system follows a distributed, event-driven design integrating natural langua
 
 ## High-Level Diagram
 
-The architecture is visually defined in the `architecture.drawio` file located in the root of the repository. You can import this file directly into [Draw.io / Diagrams.net](https://app.diagrams.net/) to view or modify the enterprise-grade schematic.
+![Architecture Diagram](PicoClaw-FinOps-Copilot.drawio.png)
 
 ### Request Flow
 

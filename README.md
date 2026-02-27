@@ -17,19 +17,8 @@ It helps engineering teams:
 
 # 🧱 Architecture
 
-```
-Slack
-   ↓
-PicoClaw Gateway
-   ↓
-FinOps Engine (Deterministic Logic)
-   ↓
-AWS Cost Explorer (IAM Role)
-   ↓
-LLM Explanation Layer
-   ↓
-Slack Response
-```
+![Architecture Diagram](PicoClaw-FinOps-Copilot.drawio.png)
+
 
 ### Core Design Principle
 
@@ -121,7 +110,18 @@ Enable Slack channel:
 "slack": {
   "enabled": true,
   "bot_token": "xoxb-...",
-  "app_token": "xapp-..."
+  "app_token": "xapp-...",
+  "allow_from": []
+}
+```
+
+Enable Telegram channel (Alternative):
+
+```json
+"telegram": {
+  "enabled": true,
+  "bot_token": "123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11",
+  "allow_from": ["123456789"]
 }
 ```
 
