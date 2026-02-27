@@ -1,14 +1,13 @@
 # PicoClaw FinOps Copilot
 
-> AI-powered AWS FinOps automation agent built for DevOps teams.
+> Enterprise-grade AIOps & LLMOps automation agent built for DevOps teams.
 
 PicoClaw FinOps Copilot is a Slack-native, AI-assisted cloud cost intelligence platform that integrates AWS Cost Explorer with deterministic cost analysis and LLM-based executive reporting.
 
-It helps engineering teams:
+It bridges the gap between **DevOps**, **FinOps**, **LLMOps**, and **AIOps** by helping engineering teams:
 
 - Compare monthly cloud spend
-- Detect cost anomalies
-- Identify waste
+- Detect cost anomalies and idle resources
 - Automate scheduled reports
 - Explain cost changes in plain language
 - Operate securely using IAM roles (no static credentials)
