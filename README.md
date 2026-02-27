@@ -40,29 +40,25 @@ This prevents hallucination and ensures financial accuracy.
 
 ---
 
-# ✨ Features
+# ✨ Features & Installed Skills
 
-## 📊 Cost Analysis
+## 💰 FinOps Skill (`skills/finops`)
+This repository comes with a built-in AWS FinOps skill for PicoClaw, allowing it to act as your autonomous cost analyst.
 
-- Compare this month vs last month spend
-- Service-level breakdown
-- Percentage change calculation
-- Top cost contributors
-- Budget deviation reporting
+**Capabilities:**
+- **Cost Summary / Service Breakdown:** Get top 5 service costs for any time range (e.g., "last 7 days").
+- **Monthly Cost Comparison:** Compare current month spend vs previous month spend with percentage change highlighting.
+- **Idle Resource Detection:** Finds unused EBS volumes (`available` state), calculates monthly waste, and offers cleanup assistance safely.
 
 ## 🚨 Alerts & Monitoring
-
 - Daily cost summary
-- Budget threshold alerts
 - Service-level cost spike detection
 - Weekly executive report
 
 ## 🧠 AI-Enhanced Insights
-
-- Plain-language explanations
-- Optimization recommendations
-- Trend summaries
-- Slack-friendly formatting
+- Plain-language explanations of cost increases
+- Slack-friendly formatting (no massive raw JSON dumps)
+- Safe read-only executions (destructions require explicit user confirmation)
 
 ## 🔐 Security-First Design
 
