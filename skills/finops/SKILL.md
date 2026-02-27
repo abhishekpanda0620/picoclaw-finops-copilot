@@ -1,7 +1,7 @@
 ---
 name: finops
 description: AWS cost analysis and cloud optimization using AWS CLI.
-metadata: {"openclaw":{"emoji":"💰","requires":{"bins":["aws"]}}}
+metadata: {"nanobot":{"emoji":"💰","requires":{"bins":["aws"]}}}
 ---
 
 # FinOps – AWS Cost Analysis
