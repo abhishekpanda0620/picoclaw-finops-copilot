@@ -139,33 +139,52 @@ http://127.0.0.1:18790/health
 http://127.0.0.1:18790/ready
 ```
 
----
+# 💬 Example Slack / Telegram Commands
 
-# 💬 Example Slack Commands
+Here are examples of what the FinOps Copilot outputs when you ask it for cost data in Slack or Telegram:
 
 ### Monthly Comparison
 
-```
-Compare this month cost with last month
-```
+> **User:** Compare this month cost with last month
+> 
+> **PicoClaw:** 
+> 📊 *AWS Monthly Cost Comparison*
+> 
+> Current Month (Feb): `$1,240.50`
+> Previous Month (Jan): `$980.20`
+> 
+> Change: `+$260.30` (⚠️ +26.5%)
+> 
+> *Analysis:* The increase is primarily driven by Amazon EC2 and an anomaly in S3 Data Transfer costs on Feb 14th.
 
 ### Service Breakdown
 
-```
-Show EC2 cost trend
-```
+> **User:** Show EC2 cost trend for the last week
+> 
+> **PicoClaw:** 
+> 💰 *AWS Cost Analysis (Last 7 Days)*
+> 
+> Total Cost: `$450.00`
+> 
+> Top Services:
+> • Amazon EC2 → `$210.00`
+> • Relational Database Service (RDS) → `$130.00`
+> • Amazon S3 → `$60.00`
 
 ### Idle Resource Detection
 
-```
-Find unused EBS volumes
-```
-
-### Scheduled Reports
-
-```
-Send CPU, RAM and disk stats every hour
-```
+> **User:** Find unused EBS volumes
+> 
+> **PicoClaw:** 
+> ⚠️ *Idle Resource Alert* 
+> 
+> Estimated Monthly Waste: `$45.00`
+> 
+> I found 3 unattached EBS volumes in `us-east-1` that are currently in an 'available' state:
+> • `vol-049df61146c4d7901` (100 GB)
+> • `vol-08d277d34551239ab` (500 GB)
+> 
+> *Action:* Would you like me to delete these volumes to save money?
 
 ---
 
