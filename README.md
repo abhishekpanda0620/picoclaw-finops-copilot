@@ -161,6 +161,14 @@ Here are examples of what the FinOps Copilot outputs when you ask it for cost da
 
 ![EBS Waste Detection](examples/ebs.png)
 
+### System Health Monitoring
+
+![Host Server Health Check](examples/system-stats.png)
+
+### Custom Scheduling
+
+![Scheduled Alert Setup](examples/scheduler.png)
+
 ---
 
 # 📅 Automation Capabilities
