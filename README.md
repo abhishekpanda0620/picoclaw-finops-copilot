@@ -186,19 +186,6 @@ Here are examples of what the FinOps Copilot outputs when you ask it for cost da
 | Anomaly Detection | Detect sudden cost spikes |
 | Waste Detection | Identify idle resources |
 
----
-
-# 📈 Roadmap
-
-| Phase | Capability | Status |
-|-------|------------|--------|
-| Phase 1 | Slack FinOps Integration | ✅ |
-| Phase 2 | Deterministic Cost Engine | 🚧 |
-| Phase 3 | Automated Alerts | 🚧 |
-| Phase 4 | Anomaly Detection | ⏳ |
-| Phase 5 | Autonomous Optimization | ⏳ |
-
-Full roadmap available in `ROADMAP.md`.
 
 ---
 

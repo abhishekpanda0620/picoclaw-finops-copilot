@@ -6,7 +6,6 @@ This guide covers how to deploy the PicoClaw FinOps Copilot on an AWS EC2 instan
 
 1.  **AWS CLI Configured:** Ensure you have the AWS CLI installed and configured with credentials that have sufficient permissions to create EC2 instances, Security Groups, and IAM Roles.
 2.  **Terraform Installed:** Ensure you have [Terraform](https://www.terraform.io/downloads) installed (v1.0+ recommended).
-3.  **SSH Key Pair:** You need an existing EC2 Key Pair in the region you intend to deploy to (default is `us-east-1`).
 
 ## Infrastructure Architecture
 
@@ -28,31 +27,31 @@ This guide covers how to deploy the PicoClaw FinOps Copilot on an AWS EC2 instan
     ```
 
 3.  **Review the Plan:**
-    You must provide the name of your pre-existing SSH Key Pair. You can also specify the `os_type` to switch between Amazon Linux and Ubuntu.
+    You can optionally specify the `os_type` to switch between Amazon Linux and Ubuntu.
 
     ```bash
     # To deploy with Amazon Linux 2023 (default)
-    terraform plan -var="key_name=my-ssh-key"
+    terraform plan
 
     # To deploy with Ubuntu 22.04 LTS
-    terraform plan -var="key_name=my-ssh-key" -var="os_type=ubuntu"
+    terraform plan -var="os_type=ubuntu"
     ```
 
 4.  **Apply the Configuration:**
     If the plan looks correct, apply it to provision the infrastructure.
     ```bash
-    terraform apply -var="key_name=my-ssh-key"
+    terraform apply
     ```
     *Type `yes` when prompted.*
 
 5.  **Access the Server:**
-    Once applied, Terraform will output the public IP of the newly created instance.
+    Once applied, Terraform will output the public IP of the newly created instance. It will also save a private key named `picoclaw-finops-copilot-key.pem` in your current folder.
     ```bash
     # For Amazon Linux:
-    ssh -i /path/to/my-ssh-key.pem ec2-user@<instance_public_ip>
+    ssh -i picoclaw-finops-copilot-key.pem ec2-user@<instance_public_ip>
 
     # For Ubuntu:
-    ssh -i /path/to/my-ssh-key.pem ubuntu@<instance_public_ip>
+    ssh -i picoclaw-finops-copilot-key.pem ubuntu@<instance_public_ip>
     ```
 
 ## IAM Policy Customization
@@ -90,12 +89,12 @@ Before PicoClaw can operate, it requires an LLM Provider configuration and the F
 
 2. **Transfer the Bundle to your EC2 instance:**
    ```bash
-   scp -i /path/to/my-ssh-key.pem deploy/dist/picoclaw-deploy.zip ubuntu@<instance_public_ip>:~/
+   scp -i deploy/terraform/picoclaw-finops-copilot-key.pem deploy/dist/picoclaw-deploy.zip ubuntu@<instance_public_ip>:~/
    ```
 
 3. **SSH into the instance and run the setup:**
    ```bash
-   ssh -i /path/to/my-ssh-key.pem ubuntu@<instance_public_ip>
+   ssh -i deploy/terraform/picoclaw-finops-copilot-key.pem ubuntu@<instance_public_ip>
    unzip picoclaw-deploy.zip
    chmod +x deploy/setup-picoclaw.sh
    ./deploy/setup-picoclaw.sh

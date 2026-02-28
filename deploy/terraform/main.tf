@@ -2,6 +2,25 @@ provider "aws" {
   region = var.aws_region
 }
 
+# Generate a secure SSH key pair automatically
+resource "tls_private_key" "picoclaw_key" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
+# Register the public key with AWS
+resource "aws_key_pair" "picoclaw_keypair" {
+  key_name   = "${var.project_name}-key"
+  public_key = tls_private_key.picoclaw_key.public_key_openssh
+}
+
+# Save the private key locally for the user to SSH in with
+resource "local_file" "private_key" {
+  content         = tls_private_key.picoclaw_key.private_key_pem
+  filename        = "${path.module}/${aws_key_pair.picoclaw_keypair.key_name}.pem"
+  file_permission = "0400"
+}
+
 # Fetch the latest Amazon Linux 2023 AMI
 data "aws_ami" "amazon_linux_2023" {
   most_recent = true
@@ -108,7 +127,7 @@ resource "aws_iam_instance_profile" "picoclaw_profile" {
 resource "aws_instance" "picoclaw" {
   ami           = local.selected_ami
   instance_type = var.instance_type
-  key_name      = var.key_name
+  key_name      = aws_key_pair.picoclaw_keypair.key_name
 
   vpc_security_group_ids = [aws_security_group.picoclaw_sg.id]
   iam_instance_profile   = aws_iam_instance_profile.picoclaw_profile.name
