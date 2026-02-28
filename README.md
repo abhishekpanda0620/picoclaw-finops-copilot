@@ -77,6 +77,11 @@ This repository comes with a built-in AWS FinOps skill for PicoClaw, allowing it
 
 # Quick Start
 
+## Prerequisites
+To launch the automated Terraform deployment, please refer to the complete deployment guide located at [`deploy/README.md`](deploy/README.md).
+
+**Security Note:** Do not hardcode any AWS credentials! The deployment provisions an EC2 instance with an attached **IAM Role** so the agent can run securely using inherited permissions.
+
 ## Attach IAM Role to EC2
 
 Minimum required permissions:
