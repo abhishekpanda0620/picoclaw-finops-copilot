@@ -150,6 +150,20 @@ http://127.0.0.1:18790/health
 http://127.0.0.1:18790/ready
 ```
 
+---
+
+# 📚 Documentation & Setup Guides
+
+For detailed instructions on configuring specific integrations and features, please refer to the guides below:
+
+- **[🤖 NVIDIA LLM Setup](docs/nvidia-llm-setup.md):** Configure the NVIDIA-hosted LLM for the Copilot's reasoning engine.
+- **[💬 Slack Integration](docs/slack-setup.md):** Connect the agent to your Slack workspace using Socket Mode.
+- **[✈️ Telegram Integration](docs/telegram-setup.md):** Set up a Telegram bot for mobile-friendly cloud monitoring.
+- **[⚙️ Automation & CRON](docs/automation.md):** Learn how to use the built-in scheduler for daily reports and alerts.
+- **[📝 Example Prompts](docs/PROMPT.md):** View the example prompts that dictate the FinOps Copilot's behavior and constraints.
+
+---
+
 # 💬 Example Slack / Telegram Commands
 
 Here are examples of what the FinOps Copilot outputs when you ask it for cost data in Slack or Telegram:
